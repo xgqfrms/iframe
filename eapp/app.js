@@ -16,7 +16,8 @@ const iframeForEapp = (debug = false) => {
     let iframe = document.querySelector(`[data-dom="iframe"]`);
     let hash_url = window.parent.location.hash.slice(1);
     if (iframe && hash_url) {
-        iframe.src = `http://${hash_url}`;
+        iframe.src = `https://${hash_url}`;
+        // iframe.src = `http://${hash_url}`;
     } else {
         if (debug) {
             console.log(`hash_url =`, hash_url);
@@ -31,6 +32,7 @@ if (iframe) {
     // iframe.src = `http://${url}`;
     let hash_url = window.parent.location.hash.slice(1);
     console.log(`hash_url =`, hash_url);
-    iframe.src = `http://${hash_url}`;
+    iframe.src = `https://${hash_url}`;
+    // iframe.src = `http://${hash_url}`;
 }
 // hashChange ??? url change
