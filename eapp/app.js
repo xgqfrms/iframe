@@ -28,10 +28,10 @@ const iframeForEapp = (debug = false) => {
 let iframe = document.querySelector(`[data-dom="iframe"]`);
 if (iframe) {
     let url = window.parent.location.search.slice(1);
-    console.log(`url =`, url);
+    // console.log(`url =`, url);
     // iframe.src = `http://${url}`;
     let hash_url = window.parent.location.hash.slice(1);
-    console.log(`hash_url =`, hash_url);
+    // console.log(`hash_url =`, hash_url);
     // iframe.src = `https://${hash_url}`;
     iframe.src = `http://${hash_url}`;
 }
