@@ -32,7 +32,7 @@ if (iframe) {
     // iframe.src = `http://${url}`;
     let hash_url = window.parent.location.hash.slice(1);
     // console.log(`hash_url =`, hash_url);
-    // iframe.src = `https://${hash_url}`;
-    iframe.src = `http://${hash_url}`;
+    iframe.src = `https://${hash_url}`;
+    // iframe.src = `http://${hash_url}`;
 }
 // hashChange ??? url change
