@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="xgqfrms">
+    <meta name="generator" content="VS code">
+    <!-- <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+    <link rel="icon" type="image/png" href="./favicon.png" /> -->
+    <title>webview-checker</title>
+    <style lang="css">
+        html{
+            font-size: 100px;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-size: 0.18rem;
+        }
+        section{
+            display: flex;
+            margin: 0.3rem auto;
+            background: rgba(51, 31, 31, 0.5);
+            min-height: 60vh;
+            padding: 10px;
+        }
+        [data-dom="p"]{
+            min-height: 50vh;
+            width: 100vw;
+            color: #f0f;
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body>
+    <h1>webview-checker</h1>
+    <section>
+        <p data-dom="p"></p>
+    </section>
+    <!-- js -->
+    <script>
+        let log = console.log;
+        let p = document.querySelector(`[data-dom="p"]`);
+        p.innerHTML= "";
+        let ua = navigator.userAgent.toLowerCase();
+        log(`ua =`, ua);
+        p.insertAdjacentHTML(`beforeend`, ua);
+    </script>
+</body>
+</html>
