@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="xgqfrms">
+    <meta name="generator" content="VS code">
+    <!-- <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+    <link rel="icon" type="image/png" href="./favicon.png" /> -->
+    <title>webview-checker</title>
+    <style lang="css">
+        html{
+            font-size: calc(62.5% * 10);
+        }
+        body{
+            width: 750px;
+            height: 1334px;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        section{
+            display: flex;
+            margin: 0.3rem auto;
+            overflow: hidden;
+        }
+        section:nth-of-type(2),
+        section:nth-of-type(3){
+            background: rgba(51, 31, 31, 0.5);
+        }
+        h1{
+            font-size: 0.36rem;
+            color: #000;
+            text-align: center;
+            margin-left: 25%;
+            transform: translateX(-25%);
+            width: 200vw;
+        }
+        [data-dom="p"]{
+            overflow: hidden;
+            margin-left: 50%;
+            transform: translateX(-50%);
+            width: 100vw;
+        }
+        [data-dom="p2"]{
+            min-height: 50vh;
+            overflow: hidden;
+            width: 100vw;
+        }
+        span{
+            display: inline-block;
+            font-size: 0.23rem;
+            text-align: center;
+            vertical-align: middle;
+            height: 0.3rem;
+            line-height: 0.3rem;
+        }
+        .success {
+            color: #0f0;
+        }
+        .error {
+            color: #f00;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <h1>webview-checker</h1>
+    </section>
+    <section>
+        <p data-dom="p"></p>
+    </section>
+    <section>
+        <p data-dom="p2"></p>
+    </section>
+    <!-- js -->
+    <script>
+        let log = console.log;
+        let p = document.querySelector(`[data-dom="p"]`);
+        let p2 = document.querySelector(`[data-dom="p2"]`);
+        p.innerHTML= "";
+        p2.innerHTML= "";
+        let ua = navigator.userAgent;
+        p2.insertAdjacentHTML(`beforeend`, `<span class="success">${ua}</span><br>${JSON.stringify(window.location, null, 4)}`);
+        log(`ua =`, ua);
+        // if (ua.includes(`XYZ`)) {
+        //     p2.insertAdjacentHTML(`beforeend`, `<span class="error">This URL inside a WebView!</span>`);
+        // } else {
+        //     p2.insertAdjacentHTML(`beforeend`, `<span class="success">This URL inside a tab!</span>`);
+        // }
+        log(`window.location =`, window.location);
+        log(`window.parent.location =`, window.parent.location);
+        if (window.location !== window.parent.location) {
+            p.insertAdjacentHTML(`beforeend`, `<span class="error">This URL inside a iframe!</span>`);
+        } else {
+            p.insertAdjacentHTML(`beforeend`, `<span class="success">This URL inside a tab!</span>`);
+        }
+    </script>
+</body>
+</html>
