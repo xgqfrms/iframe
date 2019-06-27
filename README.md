@@ -10,3 +10,5 @@ https://iframe.xgqfrms.xyz/eapp/index.html
 
 
 https://iframe.xgqfrms.xyz/url-inside-iframe-checker/index.html
+
+https://iframe.xgqfrms.xyz/webview-checker/index.html
