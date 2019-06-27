@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="xgqfrms">
+    <meta name="generator" content="VS code">
+    <!-- <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+    <link rel="icon" type="image/png" href="./favicon.png" /> -->
+    <title>url-inside-iframe-checker</title>
+    <style lang="css">
+        html{
+            font-size: calc(62.5% * 10);
+        }
+        body{
+            width: 750px;
+            height: 1334px;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        section{
+            display: flex;
+            margin: 0.3rem auto;
+        }
+        section:nth-of-type(2){
+            background: rgba(51, 31, 31, 0.5);
+        }
+        h1{
+            font-size: 0.36rem;
+            color: #000;
+            text-align: center;
+            margin-left: 25%;
+            transform: translateX(-25%);
+            width: 200vw;
+        }
+        [data-dom="p"]{
+            overflow: hidden;
+            margin-left: 50%;
+            transform: translateX(-50%);
+            width: 100vw;
+        }
+        span{
+            display: inline-block;
+            font-size: 0.23rem;
+            text-align: center;
+            vertical-align: middle;
+            height: 0.3rem;
+            line-height: 0.3rem;
+        }
+        .success {
+            color: #0f0;
+        }
+        .error {
+            color: #f00;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <h1>url-inside-iframe-checker</h1>
+    </section>
+    <section>
+        <p data-dom="p"></p>
+    </section>
+    <!-- js -->
+    <script>
+        let log = console.log;
+        let p = document.querySelector(`[data-dom="p"]`);
+        p.innerHTML= "";
+        log(`window.location =`, window.location);
+        log(`window.parent.location =`, window.parent.location);
+        if (window.location !== window.parent.location) {
+            p.insertAdjacentHTML(`beforeend`, `<span class="error">This URL inside a iframe!</span>`)
+        } else {
+            p.insertAdjacentHTML(`beforeend`, `<span class="success">This URL inside a tab!</span>`)
+        }
+    </script>
+</body>
+</html>
