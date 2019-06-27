@@ -46,7 +46,7 @@
             width: 100vw;
         }
         [data-dom="p2"]{
-            min-height: 30vh;
+            min-height: 50vh;
             overflow: hidden;
             width: 100vw;
         }
@@ -84,7 +84,7 @@
         p.innerHTML= "";
         p2.innerHTML= "";
         let ua = navigator.userAgent;
-        p2.insertAdjacentHTML(`beforeend`, `<span class="error">${ua}</span>`);
+        p2.insertAdjacentHTML(`beforeend`, `<span class="success">${ua}</span>`);
         log(`ua =`, ua);
         // if (ua.includes(`XYZ`)) {
         //     p2.insertAdjacentHTML(`beforeend`, `<span class="error">This URL inside a WebView!</span>`);
