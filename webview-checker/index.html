@@ -84,7 +84,11 @@
         p.innerHTML= "";
         p2.innerHTML= "";
         let ua = navigator.userAgent;
-        p2.insertAdjacentHTML(`beforeend`, `<span class="success">${ua}</span><br>${JSON.stringify(window.location, null, 4)}`);
+        p2.insertAdjacentHTML(`beforeend`, `
+            <span class="success">${ua}</span>
+            <br>
+            <span class="success">${JSON.stringify(window.location, null, 4)}</span>
+        `);
         log(`ua =`, ua);
         // if (ua.includes(`XYZ`)) {
         //     p2.insertAdjacentHTML(`beforeend`, `<span class="error">This URL inside a WebView!</span>`);
