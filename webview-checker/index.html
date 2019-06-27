@@ -11,16 +11,18 @@
     <title>webview-checker</title>
     <style lang="css">
         html{
+            /* font-size: calc(62.5% * 2); */
             font-size: calc(62.5% * 10);
         }
-        body{
+        /* body{
             width: 750px;
             height: 1334px;
-        }
+        } */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            font-size: 0.18rem;
         }
         section{
             display: flex;
@@ -28,7 +30,8 @@
             overflow: hidden;
         }
         section:nth-of-type(2),
-        section:nth-of-type(3){
+        section:nth-of-type(3),
+        section:nth-of-type(4){
             background: rgba(51, 31, 31, 0.5);
         }
         h1{
@@ -46,13 +49,19 @@
             width: 100vw;
         }
         [data-dom="p2"]{
-            min-height: 50vh;
+            min-height: 10vh;
             overflow: hidden;
             width: 100vw;
+            padding: 0.3rem;
+            height: calc(0.3rem * 3);
+        }
+        [data-dom="pre"]{
+            width: 100vw;
+            color: #f0f;
         }
         span{
             display: inline-block;
-            font-size: 0.23rem;
+            /* font-size: 0.23rem; */
             text-align: center;
             vertical-align: middle;
             height: 0.3rem;
@@ -76,19 +85,21 @@
     <section>
         <p data-dom="p2"></p>
     </section>
+    <section>
+        <pre data-dom="pre"></pre>
+    </section>
     <!-- js -->
     <script>
         let log = console.log;
         let p = document.querySelector(`[data-dom="p"]`);
         let p2 = document.querySelector(`[data-dom="p2"]`);
+        let pre = document.querySelector(`[data-dom="pre"]`);
         p.innerHTML= "";
         p2.innerHTML= "";
+        pre.innerHTML= "";
         let ua = navigator.userAgent;
-        p2.insertAdjacentHTML(`beforeend`, `
-            <span class="success">${ua}</span>
-            <br>
-            <span class="success">${JSON.stringify(window.location, null, 4)}</span>
-        `);
+        p2.insertAdjacentHTML(`beforeend`, `<span class="success">${ua}</span>`);
+        pre.insertAdjacentHTML(`beforeend`, JSON.stringify(window.location, null, 4));
         log(`ua =`, ua);
         // if (ua.includes(`XYZ`)) {
         //     p2.insertAdjacentHTML(`beforeend`, `<span class="error">This URL inside a WebView!</span>`);
