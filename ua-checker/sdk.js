@@ -126,9 +126,11 @@ class UAChecker {
             }
             if (UAChecker.regexTester(/chrome/g, this.ua)) {
                 this.browser = "Chrome";
-            } else if (UAChecker.regexTester(/safari/g, this.ua)) {
+            }
+            if (UAChecker.regexTester(/safari/g, this.ua)) {
                 this.browser = "Safari";
-            } else if (UAChecker.regexTester(/edg/g, this.ua)) {
+            }
+            if (UAChecker.regexTester(/edg/g, this.ua)) {
                 this.browser = "Edge";
             }
         } else if (UAChecker.regexTester(/gecko/g, this.ua) && UAChecker.regexTester(/firefox/g, this.ua)) {
