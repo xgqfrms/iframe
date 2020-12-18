@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="xgqfrms">
+    <meta name="generator" content="VS code">
+    <!-- <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+    <link rel="icon" type="image/png" href="./favicon.png" /> -->
+    <title>webview-checker</title>
+    <style lang="css">
+        html{
+            /* font-size: calc(62.5% * 2); */
+            font-size: calc(62.5% * 10);
+        }
+        /* body{
+            width: 750px;
+            height: 1334px;
+        } */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-size: 0.18rem;
+        }
+        section{
+            display: flex;
+            margin: 0.3rem auto;
+            overflow: hidden;
+        }
+        section:nth-of-type(2),
+        section:nth-of-type(3),
+        section:nth-of-type(4){
+            background: rgba(51, 31, 31, 0.5);
+        }
+        h1{
+            font-size: 0.36rem;
+            color: #000;
+            text-align: center;
+            margin-left: 25%;
+            transform: translateX(-25%);
+            width: 200vw;
+        }
+        [data-dom="p"]{
+            overflow: hidden;
+            margin-left: 50%;
+            transform: translateX(-50%);
+            width: 100vw;
+        }
+        [data-dom="p2"]{
+            min-height: 10vh;
+            overflow: hidden;
+            width: 100vw;
+            padding: 0.3rem;
+            height: calc(0.3rem * 3);
+        }
+        [data-dom="pre"]{
+            width: 100vw;
+            color: #00feff;
+        }
+        span{
+            display: inline-block;
+            /* font-size: 0.23rem; */
+            text-align: center;
+            vertical-align: middle;
+            height: 0.3rem;
+            line-height: 0.3rem;
+        }
+        .success {
+            color: #0f0;
+        }
+        .error {
+            color: #f00;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <h1>webview-checker</h1>
+    </section>
+    <section>
+        <p data-dom="p"></p>
+    </section>
+    <section>
+        <p data-dom="p2"></p>
+    </section>
+    <section>
+        <pre data-dom="pre"></pre>
+    </section>
+    <!-- js -->
+    <script type="module">
+        import UAChecker from './sdk.js';
+        // import UAChecker from './sdk.mjs';
+        const log = console.log;
+        const uac = new UAChecker();
+        // let ua = navigator.userAgent;
+        log(`uac = `, uac);
+        // log(`uac.ua = `, uac.ua);
+        const {
+          browser,
+          browserVersion,
+          engine,
+          os,
+          osVersion,
+          platform,
+          ua,
+        } = uac.getAll();
+        const allInfo = {
+            platform: `平台 ${platform}`,
+            os: `系统 ${os}`,
+            osVersion: `系统版本 ${osVersion}`,,
+            browser: `浏览器 ${brwoser}`,
+            browserVersion: `浏览器版本 ${browserVersion}`,
+            engine: `浏览器引擎 ${engine}`,
+        };
+        /*
+browser: "Chrome"
+browserVersion: "87.0.4280.88"
+engine: "WebKit"
+os: "macOS"
+osVersion: "10.15.7"
+platform: "Desktop"
+ua: "mozilla/5.0 (macintosh; intel mac os x 10_15_7) applewebkit/537.36 (khtml, like gecko) chrome/87.0.4280.88 safari/537.36"
+        */
+        // let p = document.querySelector(`[data-dom="p"]`);
+        let p2 = document.querySelector(`[data-dom="p2"]`);
+        let pre = document.querySelector(`[data-dom="pre"]`);
+        // p.innerHTML= "";
+        p2.innerHTML= "";
+        pre.innerHTML= "";
+        p2.insertAdjacentHTML(`beforeend`, `<span class="success">${uac.ua}</span>`);
+        // pre.insertAdjacentHTML(`beforeend`, JSON.stringify(window.location, null, 4));
+        pre.insertAdjacentHTML(`beforeend`, JSON.stringify(allInfo, null, 4));
+        log(`window.location =`, window.location);
+        log(`window.parent.location =`, window.parent.location);
+        /*
+        if (window.location !== window.parent.location) {
+            p.insertAdjacentHTML(`beforeend`, `<span class="error">This URL inside a iframe!</span>`);
+        } else {
+            p.insertAdjacentHTML(`beforeend`, `<span class="success">This URL inside a tab!</span>`);
+        }
+        */
+    </script>
+</body>
+</html>
