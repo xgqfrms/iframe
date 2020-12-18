@@ -122,15 +122,24 @@
             `浏览器引擎: ${engine}`,
             // `userAgent: ${ua}`,
         ];
-        // const allInfo = {
-        //     platform: `平台 ${platform}`,
-        //     os: `系统 ${os}`,
-        //     osVersion: `系统版本 ${osVersion}`,
-        //     browser: `浏览器 ${browser}`,
-        //     browserVersion: `浏览器版本 ${browserVersion}`,
-        //     engine: `浏览器引擎 ${engine}`,
-        //     ua: `userAgent ${ua}`,
-        // };
+//         const all = {
+//             platform: `平台 ${platform}`,
+//             os: `系统 ${os}`,
+//             osVersion: `系统版本 ${osVersion}`,
+//             browser: `浏览器 ${browser}`,
+//             browserVersion: `浏览器版本 ${browserVersion}`,
+//             engine: `浏览器引擎 ${engine}`,
+//             ua: `userAgent ${ua}`,
+//         };
+        const origin = {
+          browser,
+          browserVersion,
+          engine,
+          os,
+          osVersion,
+          platform,
+          ua,
+        };
         /*
 browser: "Chrome"
 browserVersion: "87.0.4280.88"
@@ -149,6 +158,7 @@ ua: "mozilla/5.0 (macintosh; intel mac os x 10_15_7) applewebkit/537.36 (khtml, 
         p2.insertAdjacentHTML(`beforeend`, `<span class="success">${uac.ua}</span>`);
         // pre.insertAdjacentHTML(`beforeend`, JSON.stringify(window.location, null, 4));
         pre.insertAdjacentHTML(`beforeend`, JSON.stringify(allInfo, null, 4));
+        pre.insertAdjacentHTML(`beforeend`, JSON.stringify(origin, null, 4));
         log(`window.location =`, window.location);
         log(`window.parent.location =`, window.parent.location);
         /*
