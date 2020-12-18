@@ -79,8 +79,8 @@ class UAChecker {
                 break;
             case "Linux":
                 this.osVersion = "Linux";
-                if(ua.match(/x11; [\w.]+;/g)) {
-                    const version = ua.match(/x11; [\w.]+;/g)[0].replace(/x11; /, ``).replace(/;/, ``);
+                if(this.ua.match(/x11; [\w.]+;/g)) {
+                    const version = this.ua.match(/x11; [\w.]+;/g)[0].replace(/x11; /, ``).replace(/;/, ``);
                     this.osVersion = `Linux ${version[0].toUpperCase()}${version.slice(1)}`;
                 }
                 break;
