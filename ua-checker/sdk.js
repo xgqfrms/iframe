@@ -120,18 +120,21 @@ class UAChecker {
         if (UAChecker.regexTester(/applewebkit/g, this.ua)) {
             // webkit 内核
             if(UAChecker.regexTester(/blink/g, this.ua)) {
-                this.engine = "Blick";
+                this.engine = "Blink";
             } else {
                 this.engine = "WebKit";
             }
             if (UAChecker.regexTester(/chrome/g, this.ua)) {
                 this.browser = "Chrome";
             }
-            if (UAChecker.regexTester(/safari/g, this.ua)) {
+            if (UAChecker.regexTester(/safari/g, this.ua) && !UAChecker.regexTester(/chrome/g, this.ua)) {
                 this.browser = "Safari";
             }
             if (UAChecker.regexTester(/edg/g, this.ua)) {
                 this.browser = "Edge";
+            }
+            if(UAChecker.regexTester(/opr/g, this.ua)) {
+                this.browser = "Opera";
             }
         } else if (UAChecker.regexTester(/gecko/g, this.ua) && UAChecker.regexTester(/firefox/g, this.ua)) {
             // gecko内核
