@@ -6,6 +6,7 @@ class UAChecker {
         } else {
             this.ua = navigator.userAgent.toLocaleLowerCase();
         }
+        this.userAgent = navigator.userAgent;
         this.os = "unknow";
         this.osVersion = "unknow";
         this.platform = "unknow";
@@ -107,10 +108,10 @@ class UAChecker {
             } else {
                 this.engine = "WebKit";
             }
-            if (UAChecker.regexTester(/chrome/g, this.ua)) {
+            if (UAChecker.regexTester(/chrome/g, this.ua) || UAChecker.regexTester(/crios/g, this.ua)) {
                 this.browser = "Chrome";
             }
-            if (UAChecker.regexTester(/safari/g, this.ua) && !UAChecker.regexTester(/chrome/g, this.ua)) {
+            if (UAChecker.regexTester(/safari/g, this.ua) && !UAChecker.regexTester(/chrome/g, this.ua) && !UAChecker.regexTester(/crios/g, this.ua)) {
                 this.browser = "Safari";
             }
             if (UAChecker.regexTester(/edg/g, this.ua)) {
@@ -145,9 +146,6 @@ class UAChecker {
             }
             if (UAChecker.regexTester(/lark/g, this.ua)) {
                 this.browser = "飞书浏览器";
-            }
-            if (UAChecker.regexTester(/crios/g, this.ua)) {
-                this.browser = "Chrome";
             }
         } else if (UAChecker.regexTester(/gecko/g, this.ua) && UAChecker.regexTester(/firefox/g, this.ua)) {
             // gecko 内核
@@ -251,9 +249,9 @@ class UAChecker {
             engine: this.engine,
             platform: this.platform,
             ua: this.ua,
+            userAgent: this.userAgent,
         };
     }
 }
 
 export default UAChecker;
-
