@@ -50,12 +50,17 @@
             width: 100vw;
         }
         [data-dom="p2"]{
-            min-height: 30vh;
+            min-height: 10vh;
             /* overflow: hidden; */
             overflow-x: auto;
             width: 100vw;
             padding: 0.3rem;
             height: calc(0.3rem * 3);
+        }
+        @media screen and (max-width: 768px){
+            [data-dom="p2"]{
+                min-height: 30vh;
+            }
         }
         [data-dom="pre"]{
             width: 100vw;
@@ -84,7 +89,7 @@
 </head>
 <body>
     <section>
-        <h1>UA Checker All In One ???</h1>
+        <h1>UA Checker All In One ✅</h1>
     </section>
     <section>
         <p data-dom="p"></p>
@@ -158,10 +163,10 @@ ua: "mozilla/5.0 (macintosh; intel mac os x 10_15_7) applewebkit/537.36 (khtml, 
         p2.innerHTML= "";
         pre.innerHTML= "";
         p2.insertAdjacentHTML(`beforeend`, `<span class="success">${userAgent}</span>`);
-        p2.insertAdjacentHTML(`beforeend`, `<span class="success">${ua}</span>`);
+        // p2.insertAdjacentHTML(`beforeend`, `<br/><span class="success">${ua}</span>`);
         // pre.insertAdjacentHTML(`beforeend`, JSON.stringify(window.location, null, 4));
         pre.insertAdjacentHTML(`beforeend`, JSON.stringify(allInfo, null, 4));
-        pre.insertAdjacentHTML(`beforeend`, JSON.stringify(origin, null, 4));
+        //pre.insertAdjacentHTML(`beforeend`, `<br/>` + JSON.stringify(origin, null, 4));
         log(`window.location =`, window.location);
         log(`window.parent.location =`, window.parent.location);
         /*
