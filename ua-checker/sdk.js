@@ -21,33 +21,27 @@ class UAChecker {
         return (ua.match(regex) + "").replace(/[^0-9|_.]/g, "").replace(/_/g, ".");
     }
     getOS() {
-        // 系统
+        // 获取系统
         if (UAChecker.regexTester(/windows|win32|win64|wow32|wow64/g, this.ua)) {
-            // windows 系统
             this.os = "Windows";
         } else if (UAChecker.regexTester(/macintosh|macintel/g, this.ua)) {
-            // macos 系统
             this.os = "macOS";
         } else if (UAChecker.regexTester(/x11/g, this.ua)) {
             // linux 系统, unbuntu, fedora, redhat ...
             this.os = "Linux";
         } else if (UAChecker.regexTester(/android|adr/g, this.ua)) {
-            // android 系统
             this.os = "Android";
         } else if (UAChecker.regexTester(/ios|iphone|ipod/g, this.ua)) {
-            // ios 系统
             this.os = "iOS";
         } else if (UAChecker.regexTester(/ipad/g, this.ua)) {
-            // ios ipad 系统
             this.os = "iPadOS";
         } else if (UAChecker.regexTester(/iwatch/g, this.ua)) {
-            // ios watch 系统
             this.os = "watchOS";
         }
         return this.os;
     }
     getOSVersion() {
-        // 系统版本
+        // 获取系统版本
         if(this.os === "unknow") {
             this.getOS();
         }
@@ -70,22 +64,10 @@ class UAChecker {
                 } else if (UAChecker.versionTester(/windows nt 10.0|windows 10/g, this.ua)) {
                     this.osVersion = "Windows 10";
                 } else {
-                    // this.osVersion = "Windows Next";
+                    this.osVersion = "Windows Next";
                 }
                 break;
             case "macOS":
-                // 系统名称 Map
-                // if (UAChecker.versionTester(/mac os x 10_12/g, this.ua)) {
-                //     this.osVersion = "macOS 10.12";
-                // } else if (UAChecker.versionTester(/mac os x 10_13/g, this.ua)) {
-                //     this.osVersion = "macOS 10.13";
-                // } else if (UAChecker.versionTester(/mac os x 10_14/g, this.ua)) {
-                //     this.osVersion = "macOS 10.14";
-                // } else if (UAChecker.versionTester(/mac os x 10_15/g, this.ua)) {
-                //     this.osVersion = "macOS 10.15";
-                // } else {
-                //     this.osVersion = versionTester(/os x [\d._]+/g, this.ua);
-                // }
                 this.osVersion = UAChecker.versionTester(/os x [\d._]+/g, this.ua);
                 break;
             case "Android":
@@ -96,7 +78,7 @@ class UAChecker {
                 break;
             case "Linux":
                 this.osVersion = "Linux";
-                // this.osVersion = this.ua.match(/os [\d._]+/g, this.ua)[1];
+                // this.osVersion = this.ua.match(/x11; [\d._]+/g, this.ua)[1];
                 // mozilla/5.0 (x11; ubuntu; linux x86_64; rv:79.0) gecko/20100101 firefox/79.0"
                 break;
             default:
@@ -105,6 +87,7 @@ class UAChecker {
         return this.osVersion;
     }
     getPlatform() {
+        // 获取平台
         const OS = this.os !== "unknow" ? this.os : this.getOS();
         if (OS === "Windows" || OS === "macOS" || OS === "Linux") {
             // 桌面端
@@ -116,7 +99,7 @@ class UAChecker {
         return this.platform;
     }
     getBrowser() {
-        // 浏览器
+        // 获取浏览器
         if (UAChecker.regexTester(/applewebkit/g, this.ua)) {
             // webkit 内核
             if(UAChecker.regexTester(/blink/g, this.ua)) {
@@ -136,45 +119,62 @@ class UAChecker {
             if(UAChecker.regexTester(/opr/g, this.ua)) {
                 this.browser = "Opera";
             }
+            if(UAChecker.regexTester(/micromessenger/g, this.ua)) {
+                this.browser = "微信浏览器";
+            }
+            if (UAChecker.regexTester(/qqbrowser/g, this.ua)) {
+                this.browser = "QQ 浏览器";
+            }
+            if (UAChecker.regexTester(/ubrowser/g, this.ua)) {
+                this.browser  = "UC 浏览器";
+            }
+            if (UAChecker.regexTester(/2345explorer/g, this.ua)) {
+                this.browser  = "2345 浏览器";
+            }
+            if (UAChecker.regexTester(/metasr/g, this.ua)) {
+                this.browser = "搜狗浏览器";
+            }
+            if (UAChecker.regexTester(/lbbrowser/g, this.ua)) {
+                this.browser = "猎豹浏览器";
+            }
+            if (UAChecker.regexTester(/maxthon/g, this.ua)) {
+                this.browser = "遨游浏览器";
+            }
+            if (UAChecker.regexTester(/dingtalk/g, this.ua)) {
+                this.browser = "钉钉浏览器";
+            }
+            if (UAChecker.regexTester(/lark/g, this.ua)) {
+                this.browser = "飞书浏览器";
+            }
+            if (UAChecker.regexTester(/crios/g, this.ua)) {
+                this.browser = "Chrome";
+            }
         } else if (UAChecker.regexTester(/gecko/g, this.ua) && UAChecker.regexTester(/firefox/g, this.ua)) {
-            // gecko内核
+            // gecko 内核
             this.engine = "Gecko";
             this.browser = "Firefox";
         } else if (UAChecker.regexTester(/trident|compatible|msie/g, this.ua)) {
-            // trident内核
+            // trident 内核
             this.engine = "Trident";
             this.browser = "IE";
         } else if (UAChecker.regexTester(/opr/g, this.ua) || UAChecker.regexTester(/presto/g, this.ua)) {
             // presto 内核
             this.engine = "presto";
             this.browser = "Opera";
-        } else if (UAChecker.regexTester(/micromessenger/g, this.ua)) {
-            this.browser = "微信浏览器";
-        } else if (UAChecker.regexTester(/qqbrowser/g, this.ua)) {
-            this.browser = "QQ 浏览器";
-        } else if (UAChecker.regexTester(/ubrowser/g, this.ua)) {
-            this.browser  = "UC 浏览器";
-        } else if (UAChecker.regexTester(/2345explorer/g, this.ua)) {
-            this.browser  = "2345 浏览器";
-        } else if (UAChecker.regexTester(/metasr/g, this.ua)) {
-            this.browser = "搜狗浏览器";
-        } else if (UAChecker.regexTester(/lbbrowser/g, this.ua)) {
-            this.browser = "猎豹浏览器";
-        } else if (UAChecker.regexTester(/maxthon/g, this.ua)) {
-            this.browser = "遨游浏览器";
-        } else if (UAChecker.regexTester(/bidubrowser/g, this.ua)) {
-            this.browser = "百度浏览器";
         } else {
             this.browser = "unknow 浏览器";
         }
         return this.browser;
     }
     getBrowserVersion() {
+        // 获取浏览器版本
         const browser = this.browser !== "unknow" ? this.browser : this.getBrowser();
-        // 浏览器版本
         switch (browser) {
             case "Chrome":
                 this.browserVersion = UAChecker.versionTester(/chrome\/[\d._]+/g, this.ua);
+                if(UAChecker.regexTester(/crios/g, this.ua)) {
+                    this.browserVersion = UAChecker.versionTester(/crios\/[\d._]+/g, this.ua);
+                }
                 break;
             case "Safari":
                 this.browserVersion = UAChecker.versionTester(/safari\/[\d._]+/g, this.ua);
@@ -215,6 +215,12 @@ class UAChecker {
             case "UC 浏览器":
                 this.browserVersion = UAChecker.versionTester(/ubrowser\/[\d._]+/g, this.ua);
                 break;
+            case "飞书浏览器":
+                this.browserVersion = UAChecker.versionTester(/lark\/[\d._]+/g, this.ua);
+                break;
+            case "钉钉浏览器":
+                this.browserVersion = UAChecker.versionTester(/dingtalk\/[\d._]+/g, this.ua);
+                break;
             default:
                 // others
                 this.browserVersion = "unkown 浏览器版本";
@@ -223,6 +229,7 @@ class UAChecker {
         return this.browserVersion;
     }
     getBrowserEngine() {
+        // 获取浏览器引擎
         if(this.engine === "unknow") {
             this.getBrowser();
         }
