@@ -8,7 +8,7 @@
     <meta name="generator" content="VS code">
     <!-- <link rel="icon" type="image/x-icon" href="./favicon.ico" />
     <link rel="icon" type="image/png" href="./favicon.png" /> -->
-    <title>UA Checker All In One 🚀</title>
+    <title>UA Checker All In One</title>
     <style lang="css">
         html{
             /* font-size: calc(62.5% * 2); */
@@ -84,7 +84,7 @@
 </head>
 <body>
     <section>
-        <h1>UA Checker All In One 👻</h1>
+        <h1>UA Checker All In One ???</h1>
     </section>
     <section>
         <p data-dom="p"></p>
@@ -112,6 +112,7 @@
           osVersion,
           platform,
           ua,
+          userAgent,
         } = uac.getAll();
         const allInfo = [
             `平台: ${platform}`,
@@ -139,6 +140,7 @@
           osVersion,
           platform,
           ua,
+          userAgent,
         };
         /*
 browser: "Chrome"
@@ -155,7 +157,8 @@ ua: "mozilla/5.0 (macintosh; intel mac os x 10_15_7) applewebkit/537.36 (khtml, 
         // p.innerHTML= "";
         p2.innerHTML= "";
         pre.innerHTML= "";
-        p2.insertAdjacentHTML(`beforeend`, `<span class="success">${uac.ua}</span>`);
+        p2.insertAdjacentHTML(`beforeend`, `<span class="success">${userAgent}</span>`);
+        p2.insertAdjacentHTML(`beforeend`, `<span class="success">${ua}</span>`);
         // pre.insertAdjacentHTML(`beforeend`, JSON.stringify(window.location, null, 4));
         pre.insertAdjacentHTML(`beforeend`, JSON.stringify(allInfo, null, 4));
         pre.insertAdjacentHTML(`beforeend`, JSON.stringify(origin, null, 4));
