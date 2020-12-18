@@ -238,6 +238,7 @@ class UAChecker {
             browserVersion: this.browserVersion,
             engine: this.engine,
             platform: this.platform,
+            ua: this.ua,
         };
     }
 }
