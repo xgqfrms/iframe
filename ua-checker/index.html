@@ -8,7 +8,7 @@
     <meta name="generator" content="VS code">
     <!-- <link rel="icon" type="image/x-icon" href="./favicon.ico" />
     <link rel="icon" type="image/png" href="./favicon.png" /> -->
-    <title>webview-checker</title>
+    <title>UA Checker All In One</title>
     <style lang="css">
         html{
             /* font-size: calc(62.5% * 2); */
@@ -32,7 +32,8 @@
         section:nth-of-type(2),
         section:nth-of-type(3),
         section:nth-of-type(4){
-            background: rgba(51, 31, 31, 0.5);
+            /* background: rgba(51, 31, 31, 0.5); */
+            background: rgba(0, 0, 0, 0.5);
         }
         h1{
             font-size: 0.36rem;
@@ -49,8 +50,9 @@
             width: 100vw;
         }
         [data-dom="p2"]{
-            min-height: 10vh;
-            overflow: hidden;
+            min-height: 30vh;
+            /* overflow: hidden; */
+            overflow-x: auto;
             width: 100vw;
             padding: 0.3rem;
             height: calc(0.3rem * 3);
@@ -58,6 +60,8 @@
         [data-dom="pre"]{
             width: 100vw;
             color: #00feff;
+            padding: 30px;
+            overflow-x: auto;
         }
         span{
             display: inline-block;
@@ -73,11 +77,14 @@
         .error {
             color: #f00;
         }
+        /* p{
+            display: none;
+        } */
     </style>
 </head>
 <body>
     <section>
-        <h1>webview-checker</h1>
+        <h1>UA Checker All In One</h1>
     </section>
     <section>
         <p data-dom="p"></p>
@@ -106,14 +113,24 @@
           platform,
           ua,
         } = uac.getAll();
-        const allInfo = {
-            platform: `平台 ${platform}`,
-            os: `系统 ${os}`,
-            osVersion: `系统版本 ${osVersion}`,,
-            browser: `浏览器 ${brwoser}`,
-            browserVersion: `浏览器版本 ${browserVersion}`,
-            engine: `浏览器引擎 ${engine}`,
-        };
+        const allInfo = [
+            `平台: ${platform}`,
+            `系统: ${os}`,
+            `系统版本: ${osVersion}`,
+            `浏览器: ${browser}`,
+            `浏览器版本: ${browserVersion}`,
+            `浏览器引擎: ${engine}`,
+            // `userAgent: ${ua}`,
+        ];
+        // const allInfo = {
+        //     platform: `平台 ${platform}`,
+        //     os: `系统 ${os}`,
+        //     osVersion: `系统版本 ${osVersion}`,
+        //     browser: `浏览器 ${browser}`,
+        //     browserVersion: `浏览器版本 ${browserVersion}`,
+        //     engine: `浏览器引擎 ${engine}`,
+        //     ua: `userAgent ${ua}`,
+        // };
         /*
 browser: "Chrome"
 browserVersion: "87.0.4280.88"
@@ -144,3 +161,4 @@ ua: "mozilla/5.0 (macintosh; intel mac os x 10_15_7) applewebkit/537.36 (khtml, 
     </script>
 </body>
 </html>
+
