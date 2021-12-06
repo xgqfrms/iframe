@@ -30,25 +30,27 @@
 <!--     <script src="./heatmap.min.js"></script> -->
     <script>
       // 1. 跨域 iframe 通信
-      const iframe1 = document.getElementById('iframe1');
-      console.log('iframe1 =', iframe1);
-      console.log('iframe1.contentDocument =', iframe1.contentDocument);
-      const app = iframe1.contentDocument.querySelector('#app');
-      console.log('app =', app);
-      // iframe read once bug ??? iframe1.contentDocument
-      window.addEventListener('message', (message) => {
-          if(message.data.type=="iframeScrollEvent"){
-            console.log('\n message =', message);
-            // const app = iframe1.contentDocument.querySelector('#app');
-            console.log('app =', app);
-          }
-      });
-      // cors 见听不到 scroll event ❌
-      // iframe1.contentDocument.addEventListener('scroll', (event) => {
-      //     console.log('iframe scroll', event);
-      //     const app = iframe1.contentDocument.querySelector('#app');
-      //     console.log('app =', app);
-      // }, false);
+      setTimeout(() => {
+        const iframe1 = document.getElementById('iframe1');
+        console.log('iframe1 =', iframe1);
+        console.log('iframe1.contentDocument =', iframe1.contentDocument);
+        const app = iframe1.contentDocument.querySelector('#app');
+        console.log('app =', app);
+        // iframe read once bug ??? iframe1.contentDocument
+        window.addEventListener('message', (message) => {
+            if(message.data.type=="iframeScrollEvent"){
+              console.log('\n message =', message);
+              // const app = iframe1.contentDocument.querySelector('#app');
+              console.log('app =', app);
+            }
+        });
+        // cors 见听不到 scroll event ❌
+        // iframe1.contentDocument.addEventListener('scroll', (event) => {
+        //     console.log('iframe scroll', event);
+        //     const app = iframe1.contentDocument.querySelector('#app');
+        //     console.log('app =', app);
+        // }, false);
+      }, 3000);
     </script>
     <script>
       // 2. 同域 iframe 通信
