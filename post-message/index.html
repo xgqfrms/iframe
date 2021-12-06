@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="xgqfrms">
+    <meta name="generator" content="VS code">
+    <title>heatmap & iframe 通信</title>
+    <!-- <link rel="stylesheet" href="./style.css"> -->
+</head>
+<body>
+    <header>
+        <h1>heatmap & iframe 通信</h1>
+    </header>
+    <main>
+        <section>
+            <h3>1. 跨域 iframe 通信</h3>
+            <!-- <iframe id="iframe1" name="iframe1" src="https://cdn.xgqfrms.xyz" frameborder="0"></iframe> -->
+            <iframe id="iframe1" name="iframe1" src="https://cdn.xgqfrms.xyz/iframe/post-message/child.html" frameborder="0"></iframe>
+        </section>
+        <section>
+            <h3>2. 同域 iframe 通信</h3>
+            <iframe id="iframe2" name="iframe2" src="./child.html" frameborder="0"></iframe>
+        </section>
+    <main>
+    <footer>
+        <p>copyriht&copy; xgqfrms 2021</p>
+    </footer>
+<!--     <script src="./heatmap.min.js"></script> -->
+    <script>
+      // 1. 跨域 iframe 通信
+      const iframe1 = document.getElementById('iframe1');
+      console.log('iframe1 =', iframe1, iframe1.contentDocument);
+      // iframe1.contentDocument.addEventListener('scroll', (event) => {
+      //     console.log('iframe scroll', event);
+      // }, false);
+    </script>
+    <script>
+      // 2. 同域 iframe 通信
+      setTimeout(() => {
+        const iframe2 = document.getElementById('iframe2');
+        console.log('iframe2 =', iframe2, iframe2.contentDocument);
+        const section = iframe2.contentDocument.querySelector('section');
+        console.log('section =', section);
+        // section.addEventListener('scroll', (event) => {
+        //     console.log('iframe scroll message', event);
+        // }, false);
+        window.addEventListener('message', (message) => {
+          if(message.data.type=="iframeScrollEvent"){
+            console.log('\n message =', message);
+          }
+        });
+      }, 3000);
+      // iframe2.contentDocument.addEventListener('scroll', (event) => {
+      //     console.log('iframe scroll', event);
+      // }, false);
+    </script>
+</body>
+</html>
