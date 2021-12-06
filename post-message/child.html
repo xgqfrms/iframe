@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="xgqfrms">
+    <meta name="generator" content="VS code">
+    <title></title>
+    <style>
+      section {
+        width: 100vw;
+        height: 100%;
+        max-height: 200px;
+        overflow-y: auto;
+        background: #ccc;
+        color: #fff;
+      }
+    </style>
+</head>
+<body>
+    <header>
+        <h1></h1>
+    </header>
+    <main>
+        <section id="app">
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+            <p class="">child iframe</p>
+        </section>
+        <article></article>
+    <main>
+    <footer>
+        <p>copyriht&copy; xgqfrms 2021</p>
+    </footer>
+    <script>
+      // 防抖
+      // const debounce = (func, times = 1000) => {
+      //     let timer = null;
+      //     return () => {
+      //         if (timer){
+      //             clearTimeout(timer);
+      //         }
+      //         timer = setTimeout(fn, wait);
+      //     };
+      // };
+      // function debounce (func, times = 1000) {
+      //     let timer = null;
+      //     return function () {
+      //         if (timer){
+      //             clearTimeout(timer);
+      //         }
+      //         timer = setTimeout(fn, wait);
+      //     };
+      // };
+
+      const sendScrollMessage = () => {
+        const app = document.querySelector(`[id="app"]`);
+        const height = Math.abs(app.scrollTop);
+        // const height = app.scrollHeight - app.clientHeight;
+        console.log('app, height', app, app.scrollTop, height);
+        parent.postMessage({
+          type: "iframeScrollEvent",
+          other: "other data to pass",
+          height: height,
+        }, "http://localhost:52331/test/heatmap/index.html");
+      };
+      // function test() {
+      //   console.log('test');
+      // }
+      setTimeout(() => {
+        function debounce (func, times = 1000) {
+            let timer = null;
+            return function () {
+                if (timer){
+                    clearTimeout(timer);
+                }
+                timer = setTimeout(func, times);
+                // timer = setTimeout(() => {
+                //   func();
+                // }, times);
+            };
+        };
+        function test() {
+          console.log('test');
+        }
+        const section = document.querySelector('section');
+        console.log('section =', section);
+        section.addEventListener('scroll', (event) => {
+            // console.log('iframe scroll', event);
+            debounce(sendScrollMessage, 500)();
+            // debounce(test(), 500);
+            // debounce(test, 500)();
+            // sendScrollMessage();
+            // test();
+        }, false);
+      }, 1000);
+    </script>
+</body>
+</html>
