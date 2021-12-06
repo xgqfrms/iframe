@@ -39,7 +39,7 @@
         // iframe read once bug ??? iframe1.contentDocument
         window.addEventListener('message', (message) => {
             if(message.data.type=="iframeScrollEvent"){
-              // const app = iframe1.contentDocument.querySelector('#app');
+              const app = iframe1.contentDocument.querySelector('#app');
               console.log('\n child app =', app);
               console.log('\n child message =', message);
             }
