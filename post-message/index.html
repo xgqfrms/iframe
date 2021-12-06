@@ -39,9 +39,9 @@
         // iframe read once bug ??? iframe1.contentDocument
         window.addEventListener('message', (message) => {
             if(message.data.type=="iframeScrollEvent"){
-              console.log('\n message =', message);
               // const app = iframe1.contentDocument.querySelector('#app');
-              console.log('app =', app);
+              console.log('\n child app =', app);
+              console.log('\n child message =', message);
             }
         });
         // cors 见听不到 scroll event ❌
