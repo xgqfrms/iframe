@@ -39,7 +39,7 @@
                 if(count > 100) {
                   clearInterval(timer);
                 }
-                console.log('send message to iframe');
+                console.log('\nsend message to iframe');
                 iframe.contentWindow.postMessage({
                       type: "iframeScrollEvent",
                       other: "other data to pass",
