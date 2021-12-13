@@ -24,8 +24,8 @@
     <script>
         // 1. 跨域 iframe 通信
         const iframe = document.querySelector(`[id="iframe"]`);
-        console.log('iframe', iframe);
-         //iframe加载完毕后再发送消息，否则子页面接收不到message
+        // console.log('iframe', iframe);
+        // iframe加载完毕后再发送消息，否则子页面接收不到message
         iframe.onload = function(){
 //             //iframe加载完立即发送一条消息
 //             iframe.contentWindow.postMessage({
