@@ -27,12 +27,24 @@
         console.log('iframe', iframe);
          //iframe加载完毕后再发送消息，否则子页面接收不到message
         iframe.onload = function(){
-           //iframe加载完立即发送一条消息
-           iframe.contentWindow.postMessage({
-              type: "iframeScrollEvent",
-              other: "other data to pass",
-              height: 100,
-            }, "https://cdn.xgqfrms.xyz/iframe/post-message/scroll-iframe.html");
+//             //iframe加载完立即发送一条消息
+//             iframe.contentWindow.postMessage({
+//               type: "iframeScrollEvent",
+//               other: "other data to pass",
+//               height: 100,
+//             }, "https://cdn.xgqfrms.xyz/iframe/post-message/scroll-iframe.html");
+              let count = 0;
+              let timer = setInterval(() => {
+                if(count > 100) {
+                  clearInterval(timer);
+                }
+                console.log('send message to iframe');
+                iframe.contentWindow.postMessage({
+                      type: "iframeScrollEvent",
+                      other: "other data to pass",
+                      height: 100,
+                }, "*");
+              }, 1000);
         }
 //         iframe.postMessage({
 //           type: "iframeScrollEvent",
