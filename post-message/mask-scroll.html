@@ -35,6 +35,7 @@
 //             }, "https://cdn.xgqfrms.xyz/iframe/post-message/scroll-iframe.html");
               let count = 0;
               let timer = setInterval(() => {
+                count++;
                 if(count > 100) {
                   clearInterval(timer);
                 }
@@ -45,6 +46,7 @@
                       height: 100,
                 }, "*");
               }, 1000);
+              console.log('timer', timer);
         }
 //         iframe.postMessage({
 //           type: "iframeScrollEvent",
