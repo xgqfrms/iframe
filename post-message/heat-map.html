@@ -89,10 +89,13 @@ window.addEventListener('message', (message) => {
         // message.data.clientHeight,
         // message.data.scrollHeight,
         // message.data.rect,
+        // iframe height
         iframe.height = `${message.data.clientHeight}`;
         // iframe.height = `${message.data.clientHeight}px`;
-        mask.height = `${message.data.clientHeight}`;
+        // DOM style height
+        // mask.height = `${message.data.clientHeight}`;
         // mask.height = `${message.data.clientHeight}px`;
+        mask.style.height = `${message.data.clientHeight}px`;
     }
 });
 
