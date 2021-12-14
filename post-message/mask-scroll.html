@@ -28,7 +28,7 @@
         // iframe加载完毕后再发送消息，否则子页面接收不到message
         iframe.onload = function() {
             console.log('iframe onload');
-            let count = 0;
+            /*let count = 0;
             let timer = setInterval(() => {
                 count++;
                 if(count > 100) {
@@ -40,7 +40,7 @@
                     other: "other data to pass",
                     height: 100,
                 }, "*");
-            }, 1000);
+            }, 1000);*/
             // console.log('timer', timer);
         }
         setTimeout(() => {
