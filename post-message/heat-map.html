@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="xgqfrms">
+    <meta name="generator" content="VS code">
+    <title>mask-scroll & heat-map</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        .phone-wrapper {
+            width: 340px;
+            height: 680px;
+            border-radius: 50px;
+            border: 1px solid #ccc;
+            background-color: #f86808;
+            padding: 40px 20px;
+        }
+        .phone {
+            width: 300px;
+            height: 600px;
+            position: relative;
+            overflow: hidden;
+        }
+        .box {
+            width: 300px;
+            height: 600px;
+            position: relative;
+            overflow-x: hidden;
+            overflow-y: auto;
+            border: 1px solid red;
+        }
+        .mask {
+            width: 300px;
+            /* height: 1000px; */
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: rgba(0, 255, 0, 0.3);
+        }
+        #iframe {
+            width: 300px;
+            /* height: 600px; */
+            /* height: 3000px; */
+            /* min-height: 1000px; */
+            /* height: 100%; */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>mask-scroll & heat-map</h1>
+    </header>
+    <main>
+        <section>
+            <h3>跨域 iframe 通信</h3>
+            <!-- <iframe id="iframe" name="iframe" src="https://iframe.xgqfrms.xyz/post-message/mask-scroll.html" frameborder="0"></iframe> -->
+            <!-- <iframe id="iframe" name="iframe" src="https://cdn.xgqfrms.xyz/iframe/post-message/scroll-iframe.html" frameborder="0"></iframe> -->
+            <section class="phone-wrapper">
+                <div class="phone">
+                    <section class="box">
+                        <!-- <iframe id="iframe" name="iframe" src="http://demo.adminbuy.cn/plus/demo.php?aid=7352" frameborder="0"></iframe> -->
+                        <iframe id="iframe" name="iframe" src="https://cdn.xgqfrms.xyz/iframe/post-message/landing-page.html" frameborder="0"></iframe>
+                        <!-- canvas -->
+                        <div class="mask"></div>
+                    </section>
+                </div>
+            </section>
+        </section>
+    <main>
+    <footer>
+        <p>copyriht&copy; xgqfrms 2021</p>
+    </footer>
+    <script>
+        // 动态计算 height
+        const iframe = document.querySelector(`[id="iframe"]`);
+        // get iframe height ??? postMessage
+        // console.log('iframe', iframe);
+        // iframe.onload = function() {
+        //     let count = 0;
+        //     let timer = setInterval(() => {
+        //         count++;
+        //         if(count > 100) {
+        //             clearInterval(timer);
+        //         }
+        //         console.log('send message to iframe');
+        //         iframe.contentWindow.postMessage({
+        //             type: "iframeScrollEvent",
+        //             other: "other data to pass",
+        //             height: 100,
+        //         }, "*");
+        //     }, 1000);
+        //     console.log('timer', timer);
+        // };
+    </script>
+</body>
+</html>
