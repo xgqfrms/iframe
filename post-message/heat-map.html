@@ -35,7 +35,7 @@
         }
         .mask {
             width: 300px;
-            /* height: 1000px; */
+            min-height: 600px;
             position: absolute;
             top: 0;
             left: 0;
@@ -43,7 +43,7 @@
         }
         #iframe {
             width: 300px;
-            /* height: 600px; */
+            min-height: 600px
             /* height: 3000px; */
             /* min-height: 1000px; */
             /* height: 100%; */
@@ -75,26 +75,49 @@
         <p>copyriht&copy; xgqfrms 2021</p>
     </footer>
     <script>
-        // 动态计算 height
-        // const iframe = document.querySelector(`[id="iframe"]`);
-        // get iframe height ??? postMessage
-        // console.log('iframe', iframe);
-        // iframe.onload = function() {
-        //     let count = 0;
-        //     let timer = setInterval(() => {
-        //         count++;
-        //         if(count > 100) {
-        //             clearInterval(timer);
-        //         }
-        //         console.log('send message to iframe');
-        //         iframe.contentWindow.postMessage({
-        //             type: "iframeScrollEvent",
-        //             other: "other data to pass",
-        //             height: 100,
-        //         }, "*");
-        //     }, 1000);
-        //     console.log('timer', timer);
-        // };
+// 动态计算 height
+const iframe = document.querySelector(`[id="iframe"]`);
+const mask = document.querySelector(`[id="mask"]`);
+// console.log('iframe', iframe);
+// console.log('mask', mask);
+
+window.addEventListener('message', (message) => {
+    console.log('\nparent reciver message =', message);
+    if(message.data.type=="iframeHeight"){
+        console.log('height message =', message,);
+        // message.data.clientHeight,
+        // message.data.scrollHeight,
+        // message.data.rect,
+        iframe.height = `${message.data.clientHeight}`;
+        // iframe.height = `${message.data.clientHeight}px`;
+        mask.height = `${message.data.clientHeight}`;
+        // mask.height = `${message.data.clientHeight}px`;
+    }
+});
+
+// iframe.height = '300px';
+// '300px'
+// iframe.height = '300';
+// '300'
+
+
+// iframe.onload = function () {
+//     let count = 0;
+//     let timer = setInterval(() => {
+//         count++;
+//         if(count > 100) {
+//             clearInterval(timer);
+//         }
+//         console.log('send message to iframe');
+//         iframe.contentWindow.postMessage({
+//             type: "iframeScrollEvent",
+//             other: "other data to pass",
+//             height: 100,
+//         }, "*");
+//     }, 1000);
+//     console.log('timer', timer);
+// };
+
     </script>
 </body>
 </html>
