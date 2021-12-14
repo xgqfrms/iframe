@@ -22,46 +22,42 @@
         <p>copyriht&copy; xgqfrms 2021</p>
     </footer>
     <script>
-        // 1. 跨域 iframe 通信
+        // 跨域 iframe 通信
         const iframe = document.querySelector(`[id="iframe"]`);
         console.log('parent page get iframe', iframe);
         // iframe加载完毕后再发送消息，否则子页面接收不到message
-        iframe.onload = function(){
-//             //iframe加载完立即发送一条消息
-//             iframe.contentWindow.postMessage({
-//               type: "iframeScrollEvent",
-//               other: "other data to pass",
-//               height: 100,
-//             }, "https://cdn.xgqfrms.xyz/iframe/post-message/scroll-iframe.html");
-              let count = 0;
-              let timer = setInterval(() => {
+        iframe.onload = function() {
+            console.log('iframe onload');
+            let count = 0;
+            let timer = setInterval(() => {
                 count++;
                 if(count > 100) {
-                  clearInterval(timer);
+                    clearInterval(timer);
                 }
                 console.log('\nsend message to iframe');
                 iframe.contentWindow.postMessage({
-                      type: "iframeScrollEvent",
-                      other: "other data to pass",
-                      height: 100,
+                    type: "iframeScrollEvent",
+                    other: "other data to pass",
+                    height: 100,
                 }, "*");
-              }, 1000);
-              console.log('timer', timer);
+            }, 1000);
+            // console.log('timer', timer);
         }
-//         iframe.postMessage({
-//           type: "iframeScrollEvent",
-//           other: "other data to pass",
-//           height: 100,
-//         }, "https://cdn.xgqfrms.xyz/iframe/post-message/scroll-iframe.html");
-// //       setTimeout(() => {
-//         window.addEventListener('message', (message) => {
-//             if(message.data.type=="iframeScrollEvent"){
-//               // const app = iframe1.contentDocument.querySelector('#app');
-//               // console.log('\n child app =', app);
-//               console.log('\n child message =', message);
-//             }
-//         });
-//       }, 3000);
+        setTimeout(() => {
+            let count = 0;
+            let timer = setInterval(() => {
+                count++;
+                if(count > 100) {
+                    clearInterval(timer);
+                }
+                console.log('\nsend message to iframe');
+                iframe.contentWindow.postMessage({
+                    type: "iframeScrollEvent",
+                    other: "other data to pass",
+                    height: 100,
+                }, "*");
+            }, 1000);
+        }, 3000);
     </script>
 </body>
 </html>
