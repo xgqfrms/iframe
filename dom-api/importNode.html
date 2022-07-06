@@ -21,6 +21,12 @@
       margin: 0;
       padding: 0;
     }
+    header, section {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      justify-content: center;
+    }
   </style>
   <!-- <link rel="stylesheet" href="./index.css"> -->
 </head>
@@ -30,7 +36,7 @@
   </header>
   <main>
     <article>
-      <section>
+      <section id="app">
         <!-- <iframe id="iframe" src="https://iframe.xgqfrms.xyz/dom-api/iframe.html" height="300" width="400"></iframe> -->
         <iframe id="iframe" src="https://iframe.xgqfrms.xyz/ua-checker/index.html" height="300" width="400"></iframe>
         <button id="btn">click importNode</button>
@@ -50,9 +56,14 @@
       const frame = document.querySelector('#iframe');
       const h1 = frame.contentWindow.document.querySelector("h1");
       // 从 iframe 文档中提取出 DOM tree
-      const dom = document.importNode(h1);
+      // ✅ deep = false 不包含 text
+      // const dom = document.importNode(h1);
+      // const dom = document.importNode(h1, false);
+      const dom = document.importNode(h1, true);
       // 把 DOM tree 添加到当前文档中
-      document.body.appendChild(dom);
+      // document.body.appendChild(dom);
+      const app = document.querySelector(`#app`);
+      app.appendChild(dom);
     };
     const btn = document.querySelector(`#btn`);
     btn.addEventListener('click', () => {
