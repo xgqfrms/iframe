@@ -7,16 +7,16 @@ https://iframe.xgqfrms.xyz/dom-api/iframe.html
 ## document.adoptNode
 
 
-https://iframe.xgqfrms.xyz/adoptNode.html
+https://iframe.xgqfrms.xyz/dom-api/adoptNode.html
 
 ## document.importNode
 
-https://iframe.xgqfrms.xyz/importNode.html
+https://iframe.xgqfrms.xyz/dom-api/importNode.html
 
 
 ## node.cloneNode
 
-https://iframe.xgqfrms.xyz/cloneNode.html
+https://iframe.xgqfrms.xyz/dom-api/cloneNode.html
 
 
 ## 注意事项
