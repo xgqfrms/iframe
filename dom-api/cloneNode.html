@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="author" content="xgqfrms">
+  <meta name="generator" content="VS code">
+  <!-- PWA -->
+  <meta name="version" content="pwa--app-v1">
+  <meta name="description" content="A PWA  App">
+  <meta name="theme-color" content="#2F3BA2" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="PWA  App">
+  <!-- PWA -->
+  <title>node.cloneNode()</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    header, section {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+  <!-- <link rel="stylesheet" href="./index.css"> -->
+</head>
+<body>
+  <header>
+    <h1 id="h1" style="color: green;">node.cloneNode()</h1>
+    <button id="btn">click cloneNode</button>
+    <hr />
+  </header>
+  <main>
+    <article>
+      <section id="app"></section>
+    </article>
+  </main>
+  <footer>
+    <p>copyright&copy; xgqfrms 2022</p>
+  </footer>
+  <!-- js -->
+  <script>
+    const log = console.log;
+    const app = document.querySelector(`#app`);
+    const cloneNode = () => {
+      // const h1 = document.querySelector("h1");
+      const h1 = document.querySelector("#h1");
+      // 从 当前文档中复制 DOM tree
+      const dom = h1.cloneNode();
+      const colors = [
+        'purple',
+        'blue',
+        'green',
+        'grassgreen',
+        'red',
+        'orange',
+        'grey',
+        'gray',
+        'pink',
+        'dark',
+      ];
+      const index = Math.floor(Math.random() * 10);
+      dom.style.color = colors[index];
+      dom.id = colors[index];
+      // log('\ncolors[index] =', colors[index]);
+      // log('dom', dom);
+      // 手动添加 text, copy 的仅仅是空标签， 不包含 text ❓
+      dom.textContent = colors[index];
+      // 把 DOM tree 添加到当前文档中
+      // document.body.appendChild(dom);
+      app.appendChild(dom);
+    };
+    const btn = document.querySelector(`#btn`);
+    btn.addEventListener('click', () => {
+      cloneNode();
+    });
+  </script>
+</body>
+</html>
