@@ -1,13 +1,22 @@
 # DOM API
 
 
+https://iframe.xgqfrms.xyz/dom-api/iframe.html
+
+
 ## document.adoptNode
 
 
+https://iframe.xgqfrms.xyz/adoptNode.html
+
 ## document.importNode
+
+https://iframe.xgqfrms.xyz/importNode.html
 
 
 ## element.cloneNode
+
+https://iframe.xgqfrms.xyz/cloneNode.html
 
 
 ## 注意事项
