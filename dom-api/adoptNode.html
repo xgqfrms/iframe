@@ -21,6 +21,12 @@
       margin: 0;
       padding: 0;
     }
+    header, section {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      justify-content: center;
+    }
   </style>
   <!-- <link rel="stylesheet" href="./index.css"> -->
 </head>
@@ -30,9 +36,9 @@
   </header>
   <main>
     <article>
-      <section>
-        <!-- <iframe id="iframe" src="https://iframe.xgqfrms.xyz/dom-api/iframe.html" height="300" width="400"></iframe> -->
-        <iframe id="iframe" src="https://iframe.xgqfrms.xyz/ua-checker/index.html" height="300" width="400"></iframe>
+      <section  id="app">
+        <iframe id="iframe" src="https://iframe.xgqfrms.xyz/dom-api/iframe.html" height="300" width="400"></iframe>
+        <!-- <iframe id="iframe" src="https://iframe.xgqfrms.xyz/ua-checker/index.html" height="300" width="400"></iframe> -->
         <button id="btn">click adoptNode</button>
       </section>
     </article>
@@ -49,10 +55,15 @@
       // const h1 = frame.contentWindow.document.getElementsByTagName("h1")[0];
       const frame = document.querySelector('#iframe');
       const h1 = frame.contentWindow.document.querySelector("h1");
+      // ✅ deep = false 不包含 text
+      // const dom = document.adoptNode(h1);
+      // const dom = document.adoptNode(h1, false);
       // 从 iframe 文档中提取出 DOM tree，并从 iframe 文档中删除该 DOM tree
-      const dom = document.adoptNode(h1);
+      const dom = document.adoptNode(h1, true);
       // 把 DOM tree 添加到当前文档中
-      document.body.appendChild(dom);
+      // document.body.appendChild(dom);
+      const app = document.querySelector(`#app`);
+      app.appendChild(dom);
     };
     const btn = document.querySelector(`#btn`);
     btn.addEventListener('click', () => {
