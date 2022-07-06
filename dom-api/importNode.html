@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="author" content="xgqfrms">
+  <meta name="generator" content="VS code">
+  <!-- PWA -->
+  <meta name="version" content="pwa--app-v1">
+  <meta name="description" content="A PWA  App">
+  <meta name="theme-color" content="#2F3BA2" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="PWA  App">
+  <!-- PWA -->
+  <title>document.importNode()</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+  <!-- <link rel="stylesheet" href="./index.css"> -->
+</head>
+<body>
+  <header>
+    <h1>document.importNode()</h1>
+  </header>
+  <main>
+    <article>
+      <section>
+        <!-- <iframe id="iframe" src="https://iframe.xgqfrms.xyz/dom-api/iframe.html" height="300" width="400"></iframe> -->
+        <iframe id="iframe" src="https://iframe.xgqfrms.xyz/ua-checker/index.html" height="300" width="400"></iframe>
+        <button id="btn">click importNode</button>
+      </section>
+    </article>
+  </main>
+  <footer>
+    <p>copyright&copy; xgqfrms 2022</p>
+  </footer>
+  <!-- js -->
+  <script>
+    const log = console.log;
+    // iframe CORS limit ⚠️
+    const importNode = () => {
+      // const frame = document.getElementsByTagName("iframe")[0];
+      // const h1 = frame.contentWindow.document.getElementsByTagName("h1")[0];
+      const frame = document.querySelector('#iframe');
+      const h1 = frame.contentWindow.document.querySelector("h1");
+      // 从 iframe 文档中提取出 DOM tree
+      const dom = document.importNode(h1);
+      // 把 DOM tree 添加到当前文档中
+      document.body.appendChild(dom);
+    };
+    const btn = document.querySelector(`#btn`);
+    btn.addEventListener('click', () => {
+      importNode();
+    });
+  </script>
+</body>
+</html>
