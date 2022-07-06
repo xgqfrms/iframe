@@ -14,7 +14,7 @@ https://iframe.xgqfrms.xyz/adoptNode.html
 https://iframe.xgqfrms.xyz/importNode.html
 
 
-## element.cloneNode
+## node.cloneNode
 
 https://iframe.xgqfrms.xyz/cloneNode.html
 
@@ -25,7 +25,7 @@ https://iframe.xgqfrms.xyz/cloneNode.html
 
 注意: 使用 document.importNode() 方法从外部文档中来拷贝节点，拷贝后在外部文档中的节点不会被删除。
 
-注意: 使用 element.cloneNode() 方法从当前文档中来拷贝节点，拷贝后在当前文档中的节点不会被删除。
+注意: 使用 node.cloneNode() 方法从当前文档中来拷贝节点，拷贝后在当前文档中的节点不会被删除。
 
       
 
