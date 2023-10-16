@@ -13,8 +13,9 @@
     <h1>beforeunload</h1>
   </header>
   <main>
+    <h3>trigger input event❓ input then delete</h3>
     <form >
-      <label for="username">username</label>
+      <label for="username">username: </label>
       <input type="text" name="username" id="username" /><br/>
       <p>谷歌、火狐、edge等浏览器中<mark>被优化了</mark>，需要用户在页面<mark>有过未保存的内容的操作</mark>才会出现提示！⚠️</p>
       <label for="email">email</label>
@@ -31,11 +32,13 @@
   </footer>
   <!-- <script type="module" src="./app.js"></script> -->
   <script>
-     window.onunload = () => {
+     window.onunload = (e) => {
+        console.log(`window.onunload ❓`, e);
         window.confirm("Do you really want to leave?")
         // window.confim("确定离开吗？");
      }
     const beforeUnloadHandler = (event) => {
+      console.log(`beforeUnloadHandler ❓`, event);
       // recommended 🚀
       event.preventDefault();
       // Equivalent to the following legacy mechanisms ⚠️
@@ -45,6 +48,8 @@
       // https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeunload_event#examples
     };
     const usernameInput = document.querySelector("#username");
+    console.log(`usernameInput`, usernameInput);
+    // input
     usernameInput.addEventListener("input", (event) => {
       if (event.target.value !== "") {
         window.addEventListener("beforeunload", beforeUnloadHandler);
