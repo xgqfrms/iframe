@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="author" content="xgqfrms">
+  <meta name="generator" content="VS code">
+  <title>chrome-beforeunload-bug</title>
+</head>
+<body>
+  <header>
+    <h1>chrome-beforeunload-bug</h1>
+  </header>
+  <main>
+    <h3>trigger input event❓ input then delete</h3>
+    <form >
+      <label for="username">username: </label>
+      <input type="text" name="username" id="username" /><br/>
+      <p>谷歌、火狐、edge等浏览器中<mark>被优化了</mark>，需要用户在页面<mark>有过未保存的内容的操作</mark>才会出现提示！⚠️</p>
+      <label for="email">email</label>
+      <input type="email" name="email" id="email"/><br/>
+      <label for="tel">tel</label>
+      <input type="tel" name="tel" id="tel"/><br/>
+      <hr />
+      <input type="submit" id="submit" value="提交"/><br/>
+      <input type="button" id="cancel" value="取消"/><br/>
+    </form>
+  </main>
+  <footer>
+    <p>copyright&copy; xgqfrms 2022</p>
+  </footer>
+  <!-- <script type="module" src="./app.js"></script> -->
+  <script>
+     // window.onunload = (e) => {
+     //    console.log(`window.onunload ❓`, e);
+     //    window.confirm("Do you really want to leave?")
+     //    // window.confim("确定离开吗？");
+     // }
+    const beforeUnloadHandler = (event) => {
+      console.log(`beforeUnloadHandler ❓`, event);
+      // recommended 🚀
+      // event.preventDefault();
+      return ``;
+      // https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeunload_event#examples
+      // https://chromestatus.com/feature/4968823574233088
+    };
+    const usernameInput = document.querySelector("#username");
+    console.log(`usernameInput`, usernameInput);
+    // input
+    usernameInput.addEventListener("input", (event) => {
+      if (event.target.value !== "") {
+        window.addEventListener("beforeunload", beforeUnloadHandler);
+      } else {
+        window.removeEventListener("beforeunload", beforeUnloadHandler);
+      }
+    });
+  </script>
+  <!-- <script type="module">
+    import {init} from "./app.js";
+    console.log(`init`, init);
+    init && init();
+  </script> -->
+</body>
+</html>
