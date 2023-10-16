@@ -21,9 +21,9 @@
       <input type="email" name="email" id="email"/><br/>
       <label for="tel">tel</label>
       <input type="tel" name="tel" id="tel"/><br/>
-      
-      <input type="submit" id="submit"/><br/>
-      <input type="button" id="cancel"/><br/>
+      <hr />
+      <input type="submit" id="submit" value="提交"/><br/>
+      <input type="button" id="cancel" value="取消"/><br/>
     </form>
   </main>
   <footer>
@@ -41,7 +41,8 @@
       // Equivalent to the following legacy mechanisms ⚠️
       // event.returnValue = "string";
       // (only works with onbeforeunload) ❓
-      // return "string";
+      return "string";
+      // https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeunload_event#examples
     };
     const usernameInput = document.querySelector("#username");
     usernameInput.addEventListener("input", (event) => {
