@@ -13,12 +13,17 @@
     <h1>beforeunload</h1>
   </header>
   <main>
-    beforeunload
-    <form>
-      <input type="text" name="name" id="name" />
+    <form >
+      <label for="username">username</label>
+      <input type="text" name="username" id="username" /><br/>
       <p>谷歌、火狐、edge等浏览器中<mark>被优化了</mark>，需要用户在页面<mark>有过未保存的内容的操作</mark>才会出现提示！⚠️</p>
-      <input type="email" name="email" />
-      <input type="tel" name="tel" />
+      <label for="email">email</label>
+      <input type="email" name="email" id="email"/><br/>
+      <label for="tel">tel</label>
+      <input type="tel" name="tel" id="tel"/><br/>
+      
+      <input type="submit" id="submit"/><br/>
+      <input type="button" id="cancel"/><br/>
     </form>
   </main>
   <footer>
@@ -31,13 +36,15 @@
         // window.confim("确定离开吗？");
      }
     const beforeUnloadHandler = (event) => {
+      // recommended 🚀
       event.preventDefault();
-      // Equivalent to the following legacy mechanisms
-      //   event.returnValue = "string";
-      //   return "string"; (only works with onbeforeunload)
+      // Equivalent to the following legacy mechanisms ⚠️
+      // event.returnValue = "string";
+      // (only works with onbeforeunload) ❓
+      // return "string";
     };
-    const nameInput = document.querySelector("#name");
-    nameInput.addEventListener("input", (event) => {
+    const usernameInput = document.querySelector("#username");
+    usernameInput.addEventListener("input", (event) => {
       if (event.target.value !== "") {
         window.addEventListener("beforeunload", beforeUnloadHandler);
       } else {
