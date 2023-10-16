@@ -26,6 +26,10 @@
   </footer>
   <!-- <script type="module" src="./app.js"></script> -->
   <script>
+     window.onunload = () => {
+        window.confirm("Do you really want to leave?")
+        // window.confim("确定离开吗？");
+     }
     const beforeUnloadHandler = (event) => {
       event.preventDefault();
       // Equivalent to the following legacy mechanisms
