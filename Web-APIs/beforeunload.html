@@ -41,10 +41,13 @@
       console.log(`beforeUnloadHandler ❓`, event);
       // recommended 🚀
       event.preventDefault();
+      // event.returnValue = "string";
+      event.returnValue = true;
+      // ??? https://github.com/mdn/content/pull/29703/commits/acbf3ebbb70ac1e09d3c86aad75487c1f3268e3c
       // Equivalent to the following legacy mechanisms ⚠️
       // event.returnValue = "string";
       // (only works with onbeforeunload) ❓
-      return "string";
+      // return "string";
       // https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeunload_event#examples
     };
     const usernameInput = document.querySelector("#username");
