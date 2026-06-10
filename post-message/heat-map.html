@@ -83,8 +83,9 @@ const mask = document.querySelector(`[id="mask"]`);
 // console.log('mask', mask);
 
 window.addEventListener('message', (message) => {
-    console.log('\nparent reciver message =', message);
+    // console.log('\nparent reciver message =', message);
     if(message.data.type=="iframeHeight"){
+        console.log('\nparent reciver message =', message);
         // onsole.log('height message =', message);
         console.log('height message.data =', message.data);
         // message.data.clientHeight,
